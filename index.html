@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trường THPT Hoàng Diệu</title>
+
+    <style>
+        .Banner{
+            width: 100%;
+            
+        }
+
+        #clock{
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        .thanhdieuhuong {
+            background-color:rgb(0, 52, 163);           
+        }
+
+        .thanhdieuhuong ul { /*tắt toàn bộ dấu chấm ở mọi nút*/
+            list-style: none;
+            margin-top: -4px; /* làm cho navbar sát với hình trên cùng */
+        }
+
+        .thanhdieuhuong > ul > li > a {
+            margin-right: 20px; /* khoảng cách giữa các nút thanh điều hướng (áp dụng duy nhất cho hàng chính) */
+            border-radius: 30px;
+        }
+
+        .thanhdieuhuong > ul > li > a:hover { /* bo tròn menu trên cùng (trừ các danh sách con) */
+        border-radius: 30px;
+        }
+
+        .thanhdieuhuong a { /* Các nút */
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 10px 15px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .thanhdieuhuong a:hover{
+            color:rgb(251, 255, 0);
+            background-color: rgb(255, 0, 0);
+        }
+        
+        .thanhdieuhuong > ul  {
+            display: flex;
+            justify-content: center;
+        }
+
+        .TKB {
+            position: relative;
+       
+        }
+
+        .TKB-dropdown {
+            position: absolute;
+            display: none;
+            background-color: rgb(2, 134, 167);
+            width: 200px;
+            padding: 0;
+        }
+
+        .TKB:hover .TKB-dropdown {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <img src="BANRFL.png" class="Banner">
+
+    <nav class="thanhdieuhuong">
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+
+            <li class="TKB">
+
+                <a href="#">Thời khoá biểu ▼</a>
+                <ul class="TKB-dropdown">
+                    <li><a href="#">Thời khoá biểu học sinh</a></li>
+                    <li><a href="#">Thời khoá biểu giáo viên</a></li>
+                </ul>
+
+            </li>
+        </ul>
+
+    </nav>
+    <p id="clock"></p> <!-- Thêm đồng hồ -->
+    
+        <script> //set up đồng hồ
+    function updateClock() {
+    const ThoiGianHienTai = new Date(); //lấy thông tin thời gian, ngày tháng hiện tại
+
+    const NgayThang = ThoiGianHienTai.toLocaleDateString('vi', {
+        weekday: 'long',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+
+    const Gio = ThoiGianHienTai.toLocaleTimeString('vi', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    });
+
+    document.getElementById("clock").textContent = NgayThang + " - " + Gio;
+}
+setInterval(updateClock, 1000); /*set thời gian cập nhật đồng hồ là mỗi 1 giây*/
+updateClock();
+    </script>
+
+</body>
+</html>
